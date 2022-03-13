@@ -1,0 +1,36 @@
+<aura:component controller="copyToClipboardCntrl" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="recordId" type="string" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="wrapperObj" type="Object"/>
+    
+    <div class="slds">
+        <div class="slds-grid">
+            <div class="slds-col slds-size--12-of-12">
+                <div class="slds-page-header" style="border-radius: 0px;  border-right: 0px;border-left: 0px;border-top: 0px;
+                                                     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.1);">
+                    
+                    <lightning:icon iconName="utility:copy_to_clipboard" alternativeText="Copy To Clipboard" size="small" /> 
+                    &nbsp;COPY TO CLIPBOARD
+                </div>
+            </div>
+        </div>
+        <table class="slds-table slds-table--bordered">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>LINK</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <lightning:icon iconName="{!v.wrapperObj.iconName}" alternativeText="{!v.wrapperObj.iconName}" size="small" /> 
+                        &nbsp;{!v.wrapperObj.sObjectName}</td>
+                    <td>
+                        <lightning:buttonIcon title="{!v.wrapperObj.recUrlLink}" aura:id="link"  value="{!index}" iconName="utility:link"  alternativeText="Link" onclick="{!c.copyLink}"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</aura:component>
